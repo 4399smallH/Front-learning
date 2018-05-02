@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+        function NewWindow(){
+            msg = open('','DisplayWindow','toolbar = no,menubar=no');
+            msg.docunment.write("<head><title>新窗口</title><body><h2 align ='center'>window对象open方法，打开新窗口</h2></body></head>");
+        }
+    </script>
+</head>
+<body>
+     <input type="button" name="button1" value="打开新窗口" onclick="NewWindow();">
+</body>
+</html>

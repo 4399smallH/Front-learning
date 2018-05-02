@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+    .flex-container{
+        display: -webkit-flex;
+        display: flex;
+        -webkit-flex-flow:row wrap;
+        flex-flow: row wrap;
+        text-align: center;
+        font-weight: bold;
+    }
+    .flex-container>*{
+        padding: 10px;
+        flex:1 100%;
+    }
+    ul{
+        /* list-style: none; */
+    }
+    .main{
+        text-align: left;
+        background: #7D9138;
+    }
+    .footer{
+        background: #D7313A;
+    }
+    .aside1{
+        background: #D3732B;
+    }
+    .aside2{
+        background: #6E1D;
+    }
+    @media(min-width: 768px){
+        /* .main    { flex: 3 0px; }
+        .aside1 { order: 1; } 
+        .main    { order: 2; }
+        .aside2 { order: 3; }
+        .footer  { order: 4; } */
+        .main    { flex: 3 0px; }
+        .aside1 { order: 1; } 
+        .main    { order: 2; }
+        .aside2 { order: 3; }
+        .footer  { order: 4; }
+        /* .header,.main,.aside,.footer{
+            font-size: 1.5rem;
+        } */
+    }
+    @media(min-width: 480px){
+        .aside{flex:1 auto;}
+    }
+</style>
+</head>
+<body>
+    <div class="flex-container">
+        <header class="header">
+            <h1>饮食与健康</h1>
+        </header>
+        <article class="main">
+            <h2>健康饮食的重要性</h2>
+            <p>
+                饮食健康十分重要饮食健康十分重要饮食健康十分重要饮食健康十分重要饮食健康十分重要饮食健康十分重要
+                饮食健康十分重要饮食健康十分重要饮食健康十分重要饮食健康十分重要饮食健康十分重要饮食健康十分重要
+            </p>
+        </article>
+        <aside class="aside aside1">
+            <ul>
+                <li><a href="#">蔬菜类</a></li>
+                <li><a href="#">水果类</a></li>
+                <li><a href="#">坚果类</a></li>
+                <li><a href="#">谷物类</a></li>
+                <li><a href="#">肉蛋奶</a></li>
+            </ul>
+        </aside>  
+        <aside class="aside aside2">
+            友情链接
+            <ul>
+                <li><a href="#">链接一</a></li>
+                <li><a href="#">链接二</a></li>
+                <li><a href="#">链接三</a></li>
+            </ul>
+        </aside>  
+        <footer class="footer">
+            XCIP备15060XXX号<br>
+            Copyright&copy;2010-2016<br>
+            饮食与健康 版权所有
+        </footer>    
+    </div>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+        function check(){
+            document.getElementById("check1").checked = true ;
+        }
+        function uncheck(){
+            document.getElementById("check1").checked =false;
+        }
+        function setFocus(){
+            document.getElementById("male").focus();
+        }
+        function lostFocus(){
+            document.getElementById("male").blur();
+        }
+    </script>
+</head>
+<body>
+    <form>
+        男：<input id="male" type="radio" name="gender" value="男">
+        女：<input id="female" type="radio" name="gender" value="女">
+        <br>
+        <input type="button" onclick="setFocus()" value="设置焦点">
+        <input type="button" onclick="lostFocus()" value="失去焦点">
+        <br>
+        <br>
+        <input type="checkbox" id="check1">
+        <input type="button" onclick="check()" value="选中复选框">
+        <input type="button" onclick="uncheck()" value="取消复选框">
+    </form>
+</body>
+</html>

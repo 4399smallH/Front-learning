@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+        function countTotal(){
+            var elements = document.getElementsByTagName("input");
+            window.alert("input类型节点数"+elements.length);
+        }
+        function submitValue(){
+            var sv = document.getElementById("submit");
+            window.alert("按钮得value值是"+sv.value);
+        }
+    </script>
+</head>
+<body>
+    <form id="form1" name="form1" method="POST">
+        <table width="280" border="1" cellspacing="0" cellpadding="0">
+            <tbody>
+                <tr>
+                    <td width="20%">用户名</td>
+                    <td width="80%"><input type="text" name="input1" name="input1"></td>
+                </tr>
+                <tr>
+                    <td>密码</td>
+                    <td><input type="password" id="password1" id="password1"</td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td><input type="submit" name="submit" id="submit" value="提交"></td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+    <a href="javascript:void(0);" onclick="countTotal();">统计input子节点数量</a>
+    <a href="javascript:void(0);" onclick="submitValue();">获取提交按钮内容</a>
+</body>
+</html>

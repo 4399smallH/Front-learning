@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        #div1{
+            border:1px red solid;
+            width:150px;
+            height:180px;
+            text-align: center;
+            display: none;
+        }
+    </style>
+    <script>
+        function toggle(targetid){
+            target = document.getElementById(targetid);
+            if(target){
+                if(target.style.display == "block"){
+                    target.style.display ="none";
+                }
+                else{
+                    target.style.display ="block";
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <a href="#" onclick="toggle('div1')"> 显示和隐藏</a>
+    <div id="div1" >
+        <p>星夜</p>
+    </div>
+</body>
+</html>

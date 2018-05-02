@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+        function check(){
+            f=document.form1;
+            if(f.uid.value ==""){
+                alert("用户名不能为空");
+                f.uid.focus();
+                return false;
+            }
+            if((f.psw1.value!="")||(f.psw2.value!="")){
+                if(f.psw1.value !=f.psw2.value){
+                    alert("密码不一致，重新输入");
+                    f.psw1.focus();
+                    return false;
+                }
+            }
+            else{
+                alert("密码不能为空");
+                f.psw1.focus();
+                return false;
+            }
+            if(f.gender.value==""){
+                alert("性别填写");
+                return false;
+            }
+            if(f.email.value !=""){
+                if(!isEmail(f.email.value)){
+                    alert("电子邮件格式不正确");
+                    f.email.focus();
+                    return false;
+                }
+            }
+            else{
+                alert("电子邮件不能为空");
+                f.email.focus;
+                return false;
+            }
+            alert("表单通过验证");
+            f.submit();
+        }
+
+        function isEmail(e){
+            var atindex = e.indexOf("@");
+            var dotindex = e.indexOf(".",atindex);
+            alert(atindex);
+            var flag = true ;
+            subStr =e.substring(0,dotindex-1);
+            if((atindex<1)||(atindex!=e.lastIndexOf("@"))||(dotindex<atindex+2)||(e.length<=subStr.length)){
+                flag=false;
+            }
+            else{
+                flag=true;
+            }
+            return(flag);
+        }
+    </script>
+</head>
+<body>
+    <form method="POST" name="form1" id="form1">
+        <table width=350 border="0" align="center" cellpadding="0" cellspacing="5">
+            <tbody>
+                <tr>
+                    <td colspan="2" align="center">新用户注册</td>
+                </tr>
+                <tr>
+                    <td width="40%"><label for="uid">用户名：</label></td>
+                    <td item-width="60%"><input name="uid" type="text" id="uid" size="30" maxlength="10"></td>
+                </tr>
+                <tr>
+                    <td>性别：</td>
+                    <td>
+                        <input type="radio" name="gender" id="gender" value="BOY">
+                        <label for="gender">男</label>
+                        <input type="radio" name="gender" id="gender" value="GIRL">
+                        <label for="gender">女</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>密码：</td>
+                    <td><input name="psw1" type="password" id="psw1" size="30"></td>
+                </tr>
+                <tr>
+                    <td><label for="psw2">确认密码：</label></td>
+                    <td><input name="psw2" type="password" id="psw2" size="30"></td>
+                </tr>
+                <tr>
+                    <td><label for="email">电子邮件</label></td>
+                    <td><input type="text" name="email" id="email" size="30" maxlength="50"></td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td>
+                        <input type="submit" name="submit" id="submit" value="注册" onclick="check();">
+                        <input type="reset" name="reset" id="reset" value="清楚">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+</body>
+</html>

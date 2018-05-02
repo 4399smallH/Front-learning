@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        #div1{
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+    </style>
+    <script>
+        function changCSS(){
+            var ocssStyle = document.styleSheets[0];
+            var ocssRules = ocssStyle.rules[0];
+            //var ocssRules = document.styleSheet[0].rules[0];合并写法
+            ocssRules.style.backgroundColor = "green";
+            ocssRules.style.width = "300px";
+            ocssRules.style.height = "300px";
+        }
+    </script>
+</head>
+<body>
+    <div id="div1">变颜色</div>
+    <a href="#" onclick="changCSS()">单击改变颜色</a>
+</body>
+</html>

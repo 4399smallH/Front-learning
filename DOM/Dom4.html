@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+        function show_alert(){
+            alert("弹出对话框");
+        }
+
+        function show_prompt(){
+            var name = prompt("请输入姓名","");
+            if(name!=null&&name!=""){
+                document.write("你好，"+name+"!");
+            }
+        }
+
+        function show_confirm(){
+            var c = confirm("按下按钮");
+            if(c=true){
+                document.write("确定按钮");
+            }
+            else{
+                document,write("取消按钮");
+            }
+        }
+    </script>
+</head>
+<body>
+    <input type="button" value="对话框" onclick="show_alert();">
+    <input type="button" value="输入对话框" onclick="show_prompt();">
+    <input type="button" value="选择对话框" onclick="show_confirm();">
+</body>
+</html>

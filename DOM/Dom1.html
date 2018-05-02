@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>html dom</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript">
+        window.onload = function(){
+            // var myPage = docunment.docunmentElement;
+            // alert(myPage.nodeName);
+            // var pageBody = docunment.body;
+            // alert(pageBody.nodeName);
+            var curTarget = document.getElementById("pt");
+            alert("父节点："+curTarget.parentNode.nodeName);
+            alert("第一个节点："+curTarget.parentNode.firstChild.nextSibling.innerHTML);
+            alert("上一个节点："+curTarget.previousSibling.previousSibling.innerHTML);
+            alert("下一个节点："+curTarget.nextSibling.nextSibling.innerHTML);
+            alert("最后个节点："+curTarget.parentNode.lastChild.previousSibling.innerHTML);
+        }
+    </script>
+</head>
+<body>
+    <ol>
+        <li>五台山</li>
+        <li>峨眉山</li>
+        <li id="pt">普陀山</li>
+        <li>九华山</li>
+        <li>梵净山</li>
+    </ol>
+</body>
+</html>

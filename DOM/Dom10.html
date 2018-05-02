@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+        function getIndex(){
+            var n = document.getElementById("MySelect");
+            alert(n.selectedIndex);
+        }
+    </script>
+</head>
+<body>
+    <form method="POST">
+        选择自己喜欢得饮料
+        <select id="MySelect">
+            <option>咖啡</option>
+            <option>红茶</option>
+            <option>果汁</option>
+            <option>BB</option>
+        </select>
+    </form>
+    <br><br>
+    <input type="button" value="显示选中项目索引" onclick="getIndex()">
+</body>
+</html>
