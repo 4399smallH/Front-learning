@@ -39,14 +39,23 @@
 
     // hover()方法是同时绑定 mouseenter和 mouseleave事件。
     // 我们可以用它来简单地应用在 鼠标在元素上行为
-    $("p").?(
-        function() {
-            $(this).css("background", 'red');
-        },
-        function() {
-            $(this).css("background", '#bbffaa');
-        }
-    );
+    // $("p").hover(
+    //     function() {
+    //         $(this).css("background", 'red');
+    //     },
+    //     function() {
+    //         $(this).css("background", '#bbffaa');
+    //     }
+    // );
+        $('p').hover(
+                function(){
+                    $(this).css('background','red');
+                }
+            ,
+                function(){
+                    $(this).css('background','blue');
+                }
+            )
 
 
     </script>
