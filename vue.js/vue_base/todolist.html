@@ -12,12 +12,41 @@
         <input id="input" type="text" v-model="inputValue">
         <button v-on:click="handleBtnClick">提交</button>
         <ul>
-            <li v-for="item in list">{{item}}</li>
+            <!-- <li v-for="item in list">
+                {{item}}
+            </li> -->
+            <todo-item v-bind:content="item" 
+                       :index="index"  
+                       v-for="(item,index) in list"
+                       @delete="hanleItemDelete">
+            </todo-item>
         </ul>
     </div>
     <script>
+        //创建全局组建 
+        //全局组建得使用   
+        // Vue.component('TodoItem',{
+        //     props:["content"],  //从父组件接受什么内容
+        //     template: "<li>{{content}}</li>"
+        // })
+
+        //局部组件  子组件向父组件传值
+        var TodoItem = {
+            props:["content","index"],
+            template: "<li @click='hanleItemClick'>{{content}}</li>",
+            methods:{
+                hanleItemClick:function(){
+                    this.$emit("delete",this.index);
+                }
+            }
+        }
+
+
         var app=new Vue({
             el: '#app',
+            components: {
+                TodoItem: TodoItem
+            },//[TodoItem]
             data:{
                 list: [],
                 inputValue:'',
@@ -26,6 +55,10 @@
                 handleBtnClick: function(){
                     this.list.push(this.inputValue);
                     this.inputValue = '';
+                },
+                hanleItemDelete:function(index){
+                    this.list.splice(index,1);
+                    // alert(index);
                 }
             }
         })

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>TODOlist jquery</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="jquery-3.3.1.js"></script>
+    <script src="vue.js"></script>
+</head>
+<body>
+    <div>
+        MVP设计模式(M层弱)
+        <input id="input" type="text">
+        <button id="btn">提交</button>
+        <ul id="list"></ul>
+    </div>
+    <script>
+        function Page(){
+
+        }
+
+        $.extend(Page.prototype,{
+            init: function(){
+                this.bindEvents();
+            },
+            bindEvents: function(){
+                var btn = $('#btn');
+                btn.on('click', $.proxy(this.handleBtnClick,this))
+            },
+            handleBtnClick: function(){
+                var inputValue = $('#input').val();
+                var ulElm = $('#list');
+                ulElm.append('<li>'+ inputValue + '</li>');
+                $('#input').val('');
+            }
+        })
+
+        var page=new Page();
+        page.init();
+    </script>
+
+</body>
+</html>
