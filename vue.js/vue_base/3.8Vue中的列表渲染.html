@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- <template v-for="(item,index) of list" >
+            <div>
+                {{index+1}}----{{item.text}}
+            </div>
+            <span>
+                {{item.text}}
+            </span>
+        </template> -->
+        <div v-for="(item,key,index) of userInfo">
+            {{item}}---{{key}}---{{index}}
+        </div>
+    </div>
+    <script>
+        //push pop shift(删除第一项) unshift(添加数组的一项) splice sort reverse
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                // list:[
+                //     // "hello",
+                //     // "dell",
+                //     // "nice",
+                //     // "to",
+                //     // "meet",
+                //     // "you",
+                //     {
+                //         id:"010120201",
+                //         text:"hello",
+                //     },
+                //     {
+                //         id:"010120202",
+                //         text:"roo",
+                //     },
+                //     {
+                //         id:"010120203",
+                //         text:"yu",
+                //     },
+                // ]   
+                userInfo:{
+                    name:"roo",
+                    age:21,
+                    gender:"male",
+                    salary:"secret",
+                }
+            }
+        })
+    </script>
+</body>
+</html>

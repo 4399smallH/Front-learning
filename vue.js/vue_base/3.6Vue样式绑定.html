@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="vue.js"></script>
+    <style>
+        .activated{
+            color:red;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <!-- <div @click="hanleDivClick"
+             :class="{activated: isActivated}">
+            Hello World
+        </div> -->
+        <!-- <div @click="hanleDivClick"
+             :class="[activated]">
+            hello world
+        </div> -->
+        <!-- <div @click="hanleDivClick"
+             :class="[activated,activatedOne]">
+            hello world
+        </div> -->
+        <!-- <div :style="styleObj" @click="handleDivClick">
+            hello world
+        </div> -->
+        <div :style="[styleObj,{fontSize:'20px'}]" @click="handleDivClick">
+                hello world
+            </div>
+    </div>
+    <script>
+        var vm=new Vue({
+            el:"#app",
+            data:{
+                // isActivated: false,
+                // activated: "",
+                // activatedOne:"activated-one",
+                styleObj:{
+                    color:"black",
+                }
+            },
+            methods:{
+                // hanleDivClick: function(){
+                //     // this.isActivated = !this.isActivated;
+                //     // if(this.activated ==="activated"){
+                //     //     this.activated="";
+                //     // }
+                //     // else{
+                //     //     this.activated = "activated";
+                //     // }
+                //     //if与这一句一样
+                //     // this.activated = this.activated ==="activated"?"":"activated"
+                // }
+                handleDivClick: function(){
+                    this.styleObj.color = this.styleObj.color ==="black"?"red":"black";
+                }
+            }
+        })
+    </script>
+</body>
+</html>
