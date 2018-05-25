@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>父子组件传值</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <counter :count="0" @inc="hanleIncrease"></counter>
+        <counter :count="1" @inc="hanleIncrease"></counter>
+        <div>{{total}}</div>
+    </div>
+    <script>
+        var counter = {
+            props:['count'],
+            data:function(){
+                return{
+                    number:this.count,
+                }
+            },
+            template:'<div @click = "handleClick">{{number}}</div>',
+            methods:{
+                handleClick:function(){
+                    this.number++;
+                    this.$emit('inc',1,);
+                }
+            },
+
+        }
+        var vm = new Vue({
+            el:'#root',
+            data:{
+                total:1,
+            },
+            components:{
+                counter:counter,
+            },
+            methods:{
+                hanleIncrease:function(step){
+                    this.total += step;
+                },
+            }
+        })
+    </script>
+</body>
+</html>
