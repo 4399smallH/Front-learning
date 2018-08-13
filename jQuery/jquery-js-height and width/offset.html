@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body{
+            text-indent: 2em;
+            color: red;
+            font-size: 15px;
+        }
+    </style>
+</head>
+<body>
+    client是指可视区域的宽高度，既content+padding(document.documentElement.clientWidth||document.body.clientWidth获得可视区域宽高)
+    offset是指可视区域的宽高度，既content+padding+border
+    ie 6 7当中offsetLeft是offsetParent父级元素padding-left + 当前元素margin-left
+    ie 8910 chrome中为offsetParent的margin-left+border-width + padding-left + 当前元素margin-left
+    Firefox中是offsetParent元素的margin-left + padding-left + 当前元素的margin-left
+    scroll中是实际内容的宽高
+    client相关宽高，各个浏览器解析都一样
+</body>
+</html>
