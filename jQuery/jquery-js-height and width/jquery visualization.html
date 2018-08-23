@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="jquery-3.3.1.js"></script>
+</head>
+<body>
+    <div id="showDiv"></div>
+    <style>
+        #showDiv {
+            width: 500px;
+            height:300px;
+            background: red;
+            margin: 1500px auto;
+        }
+
+        @-webkit-keyframes fadeInLeft {
+            0% {
+                opacity: 0;
+                -webkit-transform: translate(-100%,0);
+                -ms-transform: translate(-100%,0);
+                transform: translate(-100%,0);
+            }
+            100% {
+                opacity: 1;
+                -webkit-transform: none;
+                -ms-transform: none;
+                transform: none;
+            }
+        }
+
+        .fadeInLeft {
+            -webkit-animation: fadeInLeft 2s ease-in-out;
+            animation: fadeInLeft 2s ease-in-out;
+        }
+    </style>
+
+    <script>
+        $(window).scroll(function() {
+            var ksArea = $(window).height();
+            var scrollHeight = $(window).scrollTop();
+            var divTop = $('#showDiv').offset().top;
+            if( ksArea + scrollHeight >=divTop) {
+                $('#showDiv').addClass('fadeInLeft');
+            }
+        })
+    </script>
+</body>
+</html>
