@@ -51,7 +51,7 @@
         }
         .slider .main .main-i .caption h3 {
             font-size: 70px;
-            color: #000;
+            color: rgb(163, 134, 134);
             line-height: 70px;
             text-align: right;
             font-family: 'Open Sans Condensed';
@@ -64,7 +64,7 @@
             text-align: center;
             position: absolute;
             left: 0;
-            bottom: -13px;
+            bottom: 511px;
         }
         .slider .ctrl .ctrl-i {
             display: inline-block;
@@ -142,30 +142,92 @@
 </head>
 <body>
     <div class="slider">
-        <div class="main">
-            <div class="main-i main-i_active">
+        <!--修改View使其成为模板template-->
+        <div class="main" id="template-main">
+            <div class="main-i" id="main_{{index}}">
                 <div class="caption">
-                    <h2>h2 caption</h2>
-                    <h3>h3 caption</h3>
+                    <h2>{{h2}}</h2>
+                    <h3>{{h3}}</h3>
                 </div>
-                <img src="images/1.jpg">
-            </div>
-            <div class="main-i">
-                <div class="caption">
-                    <h2>h2 caption</h2>
-                    <h3>h3 caption</h3>
-                </div>
-                <img src="images/2.jpg">
+                <img src="images/{{index}}.jpg">
             </div>
         </div>
-        <div class="ctrl">
-            <a class="ctrl-i ctrl-i_active" href="javascript:;">
-                <img src="images/1.jpg">
-            </a>
-            <a class="ctrl-i" href="javascript:;">
-                <img src="images/2.jpg">
+        <div class="ctrl" id="template-ctrl">
+            <a class="ctrl-i" id="ctrl_{{index}}"  href="javascript:switchSlider({{index}});">
+                <img src="images/{{index}}.jpg">
             </a>
         </div>
+        <script type="text/javascript">
+
+            //数据定义
+            var data=[
+                {img:1,h1:'星空1',h2:'星空111'},
+                {img:2,h1:'星空2',h2:'星空222'},
+                {img:3,h1:'星空3',h2:'星空333'},
+                {img:4,h1:'星空4',h2:'星空444'},
+                {img:5,h1:'星空5',h2:'星空555'},
+                {img:6,h1:'星空6',h2:'星空666'}
+            ]
+    
+            //定义一个通用函数
+            var g=function(id) {
+                if( id.substr(0,1) =='.') {
+                    return document.getElementsByClassName(id.substr(1))
+                }
+                return document.getElementById(id);
+            }
+    
+            //添加幻灯片
+            function addSlider() {
+                //获取模板
+                var tpl_main = g('template-main').innerHTML.replace(/^\s*/,'').replace(/\s*$/,'')
+                var tpl_ctrl = g('template-ctrl').innerHTML.replace(/^\s*/,'').replace(/\s*$/,'')
+                //定义最终输出html的变量
+                var out_main = [];
+                var out_ctrl = [];
+
+                //遍历所有数据  构建最终输出的html
+                for( i in data) {
+                    var _html_main = tpl_main
+                                    .replace(/{{index}}/g,data[i].img)
+                                    .replace(/{{h2}}/g,data[i].h1)
+                                    .replace(/{{h3}}/g,data[i].h2);
+                    var _html_ctrl = tpl_ctrl
+                                    .replace(/{{index}}/g,data[i].img);
+                    out_main.push(_html_main);
+                    out_ctrl.push(_html_ctrl);
+                }
+                
+                //把html回写到对应dom里面
+                g('template-main').innerHTML = out_main.join('');
+                g('template-ctrl').innerHTML = out_ctrl.join('');
+            }
+            
+            //幻灯片切换
+            function switchSlider(n) {
+                //获得要展现的幻灯片以及控制按钮DOM元素
+                var main = g('main_'+n);
+                var ctrl = g('ctrl_'+n);
+
+                //获得所有的幻灯片和控制按钮
+                var clear_main = g('.main-i');
+                var clear_ctrl = g('.ctrl-i');
+                //清除active样式
+                for(i=0;i<clear_ctrl.length;i++) {
+                    clear_main[i].className = clear_main[i].className.replace(' main-i_active','');
+                    clear_ctrl[i].className = clear_ctrl[i].className.replace(' ctrl-i_active','');
+                }
+                //附加样式
+                main.className += ' main-i_active';
+                ctrl.className += ' ctrl-i_active';
+            }
+
+            //定义加载页面后处理幻灯片输出
+            window.onload = function() {
+                addSlider();
+                switchSlider(2)
+            }
+        </script>
     </div>
 </body>
 </html>
