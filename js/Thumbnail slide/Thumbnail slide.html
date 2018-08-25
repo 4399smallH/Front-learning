@@ -36,6 +36,7 @@
             left: 0;
             top: 0;
             z-index: 1;
+            top: 50%;
         }
         .slider .main .main-i .caption {
             position: absolute;
@@ -128,7 +129,8 @@
         .slider .main .main-i h2,
         .slider .main .main-i h3 {
             -webkit-transition:  all .8s 1s;
-            transition:  all .8s 1s;
+            transition:  all 1s .8s;
+            opacity: 0;
         }
         .slider .main .main-i_active {
             opacity: 1;
@@ -137,6 +139,10 @@
         .slider .main .main-i_active h2,
         .slider .main .main-i_active h3 {
             margin-right: 0;
+            opacity: 1;
+        }
+        .slider .main .main-i .caption {
+            margin-right: 19%;
         }
     </style>
 </head>
@@ -149,7 +155,7 @@
                     <h2>{{h2}}</h2>
                     <h3>{{h3}}</h3>
                 </div>
-                <img src="images/{{index}}.jpg">
+                <img src="images/{{index}}.jpg" class="picture">
             </div>
         </div>
         <div class="ctrl" id="template-ctrl">
@@ -221,11 +227,20 @@
                 main.className += ' main-i_active';
                 ctrl.className += ' ctrl-i_active';
             }
+            
+            //动态调整margin-top使其垂直居中
+            function movepictures() {
+                var pictures =  g('.picture');
+                for( i =0 ;i<pictures.length ;i++ ) {
+                    pictures[i].style.marginTop = -1*(pictures[i].clientHeight/2) + 'px';
+                }
+            }
 
             //定义加载页面后处理幻灯片输出
             window.onload = function() {
                 addSlider();
-                switchSlider(2)
+                switchSlider(1);
+                setTimeout(movepictures,10);
             }
         </script>
     </div>
