@@ -93,6 +93,7 @@
         .slider .ctrl .ctrl-i:hover img {
             bottom: 13px;
             opacity: 1;
+            z-index: 11;
             /*倒影缩略图*/
             -webkit-box-reflect:below 0px -webkit-gradient(
                 linear,
@@ -110,6 +111,7 @@
         }
         .slider .ctrl .ctrl-i_active:hover img{
             opacity: 0;
+            
         }
         /*幻灯片切换样式*/
         .slider .main .main-i {
@@ -119,6 +121,7 @@
             top: 0;
             -webkit-transition:  all .5s;
             transition:  all .5s;
+            z-index: 2;
         }
         .slider .main .main-i h2{
             margin-right: 45px;
@@ -132,9 +135,14 @@
             transition:  all 1s .8s;
             opacity: 0;
         }
+        #main_background,
         .slider .main .main-i_active {
             opacity: 1;
             right: 0;
+            z-index: 2;
+        }
+        #main_background {
+            z-index: 1;
         }
         .slider .main .main-i_active h2,
         .slider .main .main-i_active h3 {
@@ -207,6 +215,13 @@
                 //把html回写到对应dom里面
                 g('template-main').innerHTML = out_main.join('');
                 g('template-ctrl').innerHTML = out_ctrl.join('');
+
+                //增加#main-background
+                g('template-main').innerHTML += tpl_main
+                                    .replace(/{{index}}/g,'{{index}}')
+                                    .replace(/{{h2}}/g,data[i].h1)
+                                    .replace(/{{h3}}/g,data[i].h2);
+                g('main_{{index}}').id = 'main_background';
             }
             
             //幻灯片切换
@@ -226,6 +241,11 @@
                 //附加样式
                 main.className += ' main-i_active';
                 ctrl.className += ' ctrl-i_active';
+
+                //切换时 复制上一张幻灯片到main_background
+                setTimeout(function() {
+                    g('main_background').innerHTML = main.innerHTML;
+                },1000)
             }
             
             //动态调整margin-top使其垂直居中
@@ -235,12 +255,27 @@
                     pictures[i].style.marginTop = -1*(pictures[i].clientHeight/2) + 'px';
                 }
             }
+            
+            //每隔一段时间后自动切换图片
+            function changePic(num) {
+                if(num == 6 ) {
+                    switchSlider(1);
+                }
+                else{
+                    switchSlider(num+1);
+                }                  
+            }
+            
 
             //定义加载页面后处理幻灯片输出
             window.onload = function() {
                 addSlider();
                 switchSlider(1);
                 setTimeout(movepictures,10);
+                setInterval(function() {
+                    var num = parseInt(document.getElementsByClassName('ctrl-i_active')[0].id.substr(5));
+                    changePic(num);
+                },5000);
             }
         </script>
     </div>
